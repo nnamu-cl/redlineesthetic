@@ -29,6 +29,9 @@ body {
 h1, h2, h3 {
     color: var(--primary-color);
 }
+h4 {
+    color: white !important;
+}
 
 /* Header Styles */
 header {
@@ -88,7 +91,7 @@ nav {
 
 /* Hero Section */
 .hero {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero-background.jpg');
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero-section.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -102,9 +105,10 @@ nav {
 }
 
 .hero h1 {
-    font-size: 3rem;
+    font-size: 5rem;
     margin-bottom: 1rem;
     animation: fadeInUp 1s ease;
+    color: white;
 }
 
 .hero p {
@@ -138,6 +142,13 @@ nav {
     background-color: #fff;
 }
 
+.about h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
 .about-content {
     display: flex;
     align-items: center;
@@ -148,16 +159,22 @@ nav {
     flex: 1;
 }
 
+.about-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
 .about-image {
     flex: 1;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    max-width: 500px;
 }
 
 .about-image img {
     width: 100%;
     height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
 }
 
@@ -213,8 +230,9 @@ nav {
 }
 
 .reasons-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -226,6 +244,8 @@ nav {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
     text-align: center;
+    width: calc(33.333% - 2rem);
+    min-width: 250px;
 }
 
 .reason-card:hover {
@@ -370,6 +390,7 @@ footer {
     flex-wrap: wrap;
     gap: 2rem;
     margin-bottom: 2rem;
+    color: #ffffff;
 }
 
 .footer-section {
@@ -384,6 +405,7 @@ footer {
 
 .footer-section ul {
     list-style: none;
+    padding: 0;
 }
 
 .footer-section ul li {
@@ -424,6 +446,30 @@ footer {
     padding: 0.5rem;
     border: none;
     border-radius: 5px 0 0 5px;
+}
+
+.whatsapp-button {
+    display: inline-block;
+    background-color: #25D366;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.whatsapp-button:hover {
+    background-color: #128C7E;
+}
+
+.whatsapp-button i {
+    margin-right: 8px;
+}
+
+.whatsapp-number {
+    margin-top: 10px;
+    font-size: 0.9rem;
 }
 
 #newsletter-form button {
@@ -520,8 +566,17 @@ footer {
         width: 100%;
     }
 
+    .about-image {
+        order: -1;
+        margin-bottom: 2rem;
+    }
+
     .footer-content {
         flex-direction: column;
+    }
+
+    .footer-section {
+        width: 100%;
     }
 }
 
@@ -644,4 +699,16 @@ html {
 
 .gallery-grid::-webkit-scrollbar-track {
     background: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+    .reason-card {
+        width: calc(50% - 2rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .reason-card {
+        width: 100%;
+    }
 }
