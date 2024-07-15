@@ -62,34 +62,58 @@ const revealElementOnScroll = function() {
 window.addEventListener("scroll", revealElementOnScroll);
 revealElementOnScroll();
 
-// Testimonial slider
-let currentTestimonial = 0;
+// New Testimonial Slider
+const slider = document.querySelector('.testimonial-slider');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
 const testimonials = document.querySelectorAll('.testimonial');
-const totalTestimonials = testimonials.length;
+const dotsContainer = document.querySelector('.testimonial-dots');
 
-function showTestimonial(index) {
-    testimonials.forEach((testimonial, i) => {
-        testimonial.style.transform = `translateX(${100 * (i - index)}%)`;
+let currentIndex = 0;
+
+// Create dots
+testimonials.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.classList.add('dot');
+    if (index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(index));
+    dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll('.dot');
+
+function updateDots() {
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
     });
 }
 
-function nextTestimonial() {
-    currentTestimonial = (currentTestimonial + 1) % totalTestimonials;
-    showTestimonial(currentTestimonial);
+function goToSlide(index) {
+    currentIndex = index;
+    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    updateDots();
 }
 
-function prevTestimonial() {
-    currentTestimonial = (currentTestimonial - 1 + totalTestimonials) % totalTestimonials;
-    showTestimonial(currentTestimonial);
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % testimonials.length;
+    goToSlide(currentIndex);
 }
 
-// Auto-advance testimonials every 5 seconds
-setInterval(nextTestimonial, 5000);
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+    goToSlide(currentIndex);
+}
+
+nextBtn.addEventListener('click', nextSlide);
+prevBtn.addEventListener('click', prevSlide);
+
+// Auto-advance slides every 5 seconds
+setInterval(nextSlide, 5000);
 
 // Form validation and submission
 document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
     // Basic form validation
     var name = document.querySelector('input[name="name"]').value;
     var email = document.querySelector('input[name="email"]').value;
