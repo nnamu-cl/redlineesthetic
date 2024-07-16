@@ -120,7 +120,7 @@ nav {
 
 .cta-button {
     display: inline-block;
-    background-color: var(--accent-color);
+    background-color: var(--primary-color);
     color: #fff;
     padding: 0.8rem 2rem;
     text-decoration: none;
@@ -522,7 +522,7 @@ footer {
 }
 
 #newsletter-form button {
-    background-color: var(--accent-color);
+    background-color: var(--primary-color);
     color: #fff;
     border: none;
     padding: 0.5rem 1rem;
@@ -575,6 +575,10 @@ footer {
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
     }
+    #contact-form,
+    .contact-info {
+        width: 100%;
+    }
 
     .nav-menu.active {
         left: 0;
@@ -607,6 +611,7 @@ footer {
     .about-content,
     .contact-content {
         flex-direction: column;
+        gap: 2rem;
     }
 
     .about-image,
